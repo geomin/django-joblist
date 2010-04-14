@@ -1,0 +1,32 @@
+1. Checkout the code
+    - django-lingua
+    git http://github.com/geomin/django-lingua.git
+
+    - django-joblist
+    git http://github.com/geomin/django-joblist.git
+
+2. Add the paths to PYTHONPATH
+
+3. Add 'joblist' to your INSTALLED_APPS:
+
+    INSTALLED_APPS = (
+        #.....
+        'joblist',
+        #.....
+    )
+
+4. Add it to your models like:
+    ================================================================
+    from django.db import models
+    from django.contrib.auth.models import User
+    from joblist.models import *
+
+    class UserProfile(models.Model):
+        user        = models.ForeignKey(User, unique=True)
+        job     = models.ForeignKey(Job)
+        #etc.
+    ===============================================================
+5. Run ./manage.py syncdb
+
+Done!
+
